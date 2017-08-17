@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>淘宝案例</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#myDiv{
+			width: 450px;
+			height: 250px;
+			border: 2px solid #000;
+		}
+		#myDiv a{
+			display: inline-block;
+			width:120px;
+			height: 100px;
+			margin: 8px 10px;
+			border: 1px solid #ddd;
+			background-color: #ff8040;
+			position: relative;
+		}
+		#myDiv a i{
+			position: absolute;
+			display: inline-block;
+			top:20px;
+			left:40px;
+			filter: alpha(opacity:100);
+			opacity: 1;
+		}
+		#myDiv a p{
+			position: absolute;
+			display: inline-block;
+			top:60px;
+			left: 40px;
+			text-align: center;
+		}
+	</style>
+	<script src='move.js'></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var myDiv = document.getElementById("myDiv");
+			var aList = myDiv.getElementsByTagName('a');
+			for(var i=0; i<aList.length; i++){
+				aList[i].onmouseenter = function(){
+					var _this = this.getElementsByTagName('i')[0];
+					startMove(_this,{top:-20,opacity:0},function(){
+						_this.style.top = 25 + 'px';
+						startMove(_this,{top:20,opacity:100});
+					});
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id='myDiv'>
+		<a ><i ><img src="photo\game.png"></i><p>game</p></a>
+		<a ><i ><img src='photo\insurance.png'></i><p>insurance</p></a>
+		<a ><i ><img src='photo\travel.png'></i><p>travel</p></a>
+		<a ><i ><img src='photo\money.png'></i><p>money</p></a>
+		<a ><i ><img src='photo\movie.png'></i><p>movie</p></a>
+		<a ><i ><img src='photo\sell.png'></i><p>sell</p></a>
+	</div>
+</body>
+</html>
